@@ -5,7 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalProject7.Sections;
-internal class BaseSection
+public class BaseSection(string title, InformationBoard infoBoard)
 {
-    public string Title { get; set; }
+    private string Title { get; } = title;
+    public InformationBoard InfoBoard { private get; set; } = infoBoard;
+
+    public void Activate()
+    {
+        Console.Title = Title;
+    }
+
+    public void Input(string? readLine)
+    {
+        InfoBoard.ClearInput();
+    }
 }

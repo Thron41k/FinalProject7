@@ -60,7 +60,7 @@ public class InformationBoard
         Console.Write(order);
     }
 
-    public void Input(string? readLine)
+    public void ClearInput()
     {
         Helpers.ClearCurrentConsoleLine(0, BoardHeight + 3);
     }

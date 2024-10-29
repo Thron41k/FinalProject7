@@ -1,9 +1,11 @@
 ﻿using FinalProject7;
+using FinalProject7.Sections;
 
-var ib = new InformationBoard();
-var input = "";
+var sm = new SectionManager();
+sm.Add(new FirstSection("Главный раздел"));
+string? input;
 do
 {
-    ib.Input(Console.ReadLine());
+    input = Console.ReadLine();
 } while (!string.Equals(input, "exit"));
 
