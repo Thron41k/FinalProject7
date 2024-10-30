@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalProject7;
-    internal static class Helpers
+internal static class Helpers
+{
+    public static void ClearCurrentConsoleLine(int x, int y)
     {
-        public static void ClearCurrentConsoleLine(int x,int y)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, y);
-            Console.Write("Ввод: ");
-        }
+        Console.SetCursorPosition(x, y);
+        Console.Write(new string(' ', Console.WindowWidth));
+        Console.SetCursorPosition(0, y);
+        Console.Write("Ввод: ");
     }
+}
 

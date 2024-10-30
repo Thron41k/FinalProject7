@@ -5,15 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalProject7.Sections;
-public class BaseSection(string title, InformationBoard infoBoard)
+public abstract class BaseSection(string title)
 {
-    private string Title { get; } = title;
-    public InformationBoard InfoBoard { private get; set; } = infoBoard;
+    protected string Title { get; } = title;
+    public InformationBoard InfoBoard { private get; set; }
+    protected Dictionary<short, string>? _mainNavigationList { get; set; } = null;
 
-    public void Activate()
-    {
-        Console.Title = Title;
-    }
+    public abstract void Activate();
 
     public void Input(string? readLine)
     {
