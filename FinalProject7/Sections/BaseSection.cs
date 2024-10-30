@@ -8,7 +8,7 @@ namespace FinalProject7.Sections;
 public abstract class BaseSection(string title)
 {
     protected string Title { get; } = title;
-    public InformationBoard InfoBoard { private get; set; }
+    public InformationBoard InfoBoard { protected get; set; }
     protected Dictionary<short, string>? _mainNavigationList { get; set; } = null;
 
     public abstract void Activate();

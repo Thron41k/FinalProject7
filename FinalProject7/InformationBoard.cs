@@ -1,10 +1,19 @@
 ﻿namespace FinalProject7;
 public class InformationBoard
 {
-    private const int BoardWidth = 40;
-    private const int BoardHeight = 5;
+    private int BoardWidth = 40;
+    private const int DefaultBoardHeight = 5;
+    private int BoardHeight = DefaultBoardHeight;
+    private Dictionary<short, string> _mainNavigationList = new();
     public InformationBoard()
     {
+        Draw();
+    }
+
+    private void Draw()
+    {
+        Console.Clear();
+        BoardHeight = DefaultBoardHeight + (_mainNavigationList.Count+1 > DefaultBoardHeight ? _mainNavigationList.Count+1 - DefaultBoardHeight : 0);
         Console.Write('\u2554');
         for (var i = 0; i < BoardWidth + 1; i++)
         {
@@ -38,12 +47,31 @@ public class InformationBoard
         Console.WriteLine();
         SetBusket(10);
         SetOrders(0);
-        const string text = "Навигация";
-        Console.SetCursorPosition(2 + BoardWidth / 2 + (2 + BoardWidth / 2 - text.Length) / 2, 0);
-        Console.Write(text);
+        string text = "Навигация";
+        var topPos = 0;
+        Console.SetCursorPosition(1 + BoardWidth / 2 + (2 + BoardWidth / 2 - text.Length) / 2, topPos++);
+        Console.WriteLine(text);
+        foreach (var item in _mainNavigationList)
+        {
+            text = $"{item.Value}: {item.Key}";
+            Console.SetCursorPosition(1 + BoardWidth / 2 + (2 + BoardWidth / 2 - text.Length) / 2, topPos++);
+            Console.WriteLine(text);
+        }
+        text = "Выход: exit";
+        Console.SetCursorPosition(1 + BoardWidth / 2 + (2 + BoardWidth / 2 - text.Length) / 2, topPos++);
+        Console.WriteLine(text);
         Console.SetCursorPosition(0, BoardHeight + 2);
         Console.WriteLine();
         Console.Write("Ввод: ");
+    }
+
+    public Dictionary<short, string> SetMainNav
+    {
+        set
+        {
+            _mainNavigationList = value;
+            Draw();
+        }
     }
 
     public void SetBusket(short count)
