@@ -2,13 +2,34 @@
 
 namespace FinalProject7.Delivery;
 
-internal class PickPointDelivery(PickupPoint pickupPoint) : Delivery
+/// <summary>
+/// Представляет доставку в пункт выдачи.
+/// </summary>
+public class PickPointDelivery : Delivery
 {
-    private PickupPoint PickupPoint { get; } = pickupPoint;
-    public override string ContactPhoneNumber => PickupPoint.Phone;
+    private readonly PickupPoint _pickupPoint;
 
+    /// <summary>
+    /// Инициализирует новый экземпляр класса <see cref="PickPointDelivery"/>.
+    /// </summary>
+    /// <param name="pickupPoint">Пункт выдачи для доставки.</param>
+    public PickPointDelivery(PickupPoint pickupPoint)
+    {
+        _pickupPoint = pickupPoint;
+    }
+
+    /// <summary>
+    /// Возвращает контактный телефонный номер пункта выдачи.
+    /// </summary>
+    /// <returns>Контактный телефонный номер в виде строки.</returns>
+    public override string ContactPhoneNumber => _pickupPoint.Phone;
+
+    /// <summary>
+    /// Возвращает адрес пункта выдачи.
+    /// </summary>
+    /// <returns>Адрес в виде строки.</returns>
     public override string GetAddress()
     {
-        return PickupPoint.Address;
+        return _pickupPoint.Address;
     }
 }

@@ -1,15 +1,61 @@
 ﻿namespace FinalProject7.Product;
 
-public abstract class BaseProduct(string name, string article, string description, double price, int quantity, string brand)
+/// <summary>
+/// Базовый класс для продукта.
+/// </summary>
+/// <param name="productName">Название продукта.</param>
+/// <param name="articleNumber">Артикул продукта.</param>
+/// <param name="productDescription">Описание продукта.</param>
+/// <param name="unitPrice">Цена за единицу продукта.</param>
+/// <param name="quantity">Количество продукта.</param>
+/// <param name="brandName">Бренд продукта.</param>
+public abstract class BaseProduct(
+    string productName,
+    string articleNumber,
+    string productDescription,
+    double unitPrice,
+    int quantity,
+    string brandName)
 {
-    public int Id { get; set; }
-    private readonly string _name = name;
-    public string Name => IsUsed ? $"{_name}(б/у)" : _name;
-    public string Article { get; } = article;
-    public string Description { get; } = description;
-    public double Price { get; } = price;
+    /// <summary>
+    /// Уникальный идентификатор продукта.
+    /// </summary>
+    public int ProductId { get; set; }
+
+    private readonly string _productName = productName;
+    /// <summary>
+    /// Название продукта, с указанием, что он б/у, если это так.
+    /// </summary>
+    public string ProductName => IsUsed ? $"{_productName} (б/у)" : _productName;
+
+    /// <summary>
+    /// Артикул продукта.
+    /// </summary>
+    public string ArticleNumber { get; } = articleNumber;
+    /// <summary>
+    /// Описание продукта.
+    /// </summary>
+    public string ProductDescription { get; } = productDescription;
+    /// <summary>
+    /// Цена за единицу продукта.
+    /// </summary>
+    public double UnitPrice { get; } = unitPrice;
+    /// <summary>
+    /// Количество продукта.
+    /// </summary>
     public int Quantity { get; } = quantity;
-    public string Brand { get; set; } = brand;
-    public double SumPrice => Price * Quantity;
+    /// <summary>
+    /// Бренд продукта.
+    /// </summary>
+    public string BrandName { get; } = brandName;
+
+    /// <summary>
+    /// Общая стоимость продукта.
+    /// </summary>
+    public double TotalPrice => UnitPrice * Quantity;
+
+    /// <summary>
+    /// Признак того, что продукт б/у.
+    /// </summary>
     protected bool IsUsed { get; init; }
 }
