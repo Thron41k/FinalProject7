@@ -3,7 +3,7 @@
 namespace FinalProject7;
 
 /// <summary>
-/// Представляет корзину для покупок, которая может содержать различные продукты.
+/// Представляет корзину покупок, содержащую коллекцию продуктов.
 /// </summary>
 public class ShoppingCart
 {
@@ -12,7 +12,7 @@ public class ShoppingCart
     /// <summary>
     /// Возвращает продукт по указанному индексу.
     /// </summary>
-    /// <param name="index">Индекс продукта, который нужно вернуть.</param>
+    /// <param name="index">Индекс продукта для получения.</param>
     /// <returns>Продукт по указанному индексу.</returns>
     public BaseProduct this[int index] => _products[index];
 
@@ -35,11 +35,11 @@ public class ShoppingCart
     public int ProductCount => _products.Count;
 
     /// <summary>
-    /// Добавляет продукт в корзину и возвращает его присвоенный ID.
+    /// Добавляет продукт в корзину и возвращает его ID.
     /// </summary>
-    /// <typeparam name="TProduct">Тип продукта, который нужно добавить.</typeparam>
-    /// <param name="product">Продукт, который нужно добавить.</param>
-    /// <returns>Присвоенный ID добавленного продукта.</returns>
+    /// <typeparam name="TProduct">Тип продукта для добавления.</typeparam>
+    /// <param name="product">Продукт для добавления.</param>
+    /// <returns>ID добавленного продукта.</returns>
     public int AddProduct<TProduct>(TProduct product) where TProduct : BaseProduct
     {
         product.ProductId = _products.Any() ? _products.Max(p => p.ProductId) + 1 : 0;
@@ -48,10 +48,10 @@ public class ShoppingCart
     }
 
     /// <summary>
-    /// Удаляет указанный продукт из корзины.
+    /// Удаляет продукт из корзины.
     /// </summary>
-    /// <typeparam name="TProduct">Тип продукта, который нужно удалить.</typeparam>
-    /// <param name="product">Продукт, который нужно удалить.</param>
+    /// <typeparam name="TProduct">Тип продукта для удаления.</typeparam>
+    /// <param name="product">Продукт для удаления.</param>
     public void RemoveProduct<TProduct>(TProduct product) where TProduct : BaseProduct
     {
         _products.Remove(product);
@@ -60,7 +60,7 @@ public class ShoppingCart
     /// <summary>
     /// Удаляет продукт по указанному индексу из корзины.
     /// </summary>
-    /// <param name="index">Индекс продукта, который нужно удалить.</param>
+    /// <param name="index">Индекс продукта для удаления.</param>
     public void RemoveProductAt(int index)
     {
         _products.RemoveAt(index);
