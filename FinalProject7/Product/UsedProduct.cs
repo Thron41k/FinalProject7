@@ -2,7 +2,7 @@
 
 namespace FinalProject7.Product;
 
-public class Product<TCategory,TUsed> : Product<TCategory> where TCategory : BaseCategory
+public class Product<TCategory, TUsed> : Product<TCategory> where TCategory : BaseCategory
 {
     public Product(string name, string article, TCategory category, string description, double price, int quantity, string brand, TUsed used) : base(name, article, category, description, price, quantity, brand)
     {
@@ -10,6 +10,5 @@ public class Product<TCategory,TUsed> : Product<TCategory> where TCategory : Bas
         IsUsed = true;
     }
 
-    public TUsed UsedInfo { get;}
-
+    public TUsed UsedInfo { get; }
 }

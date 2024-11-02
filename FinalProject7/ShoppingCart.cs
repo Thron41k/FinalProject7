@@ -6,6 +6,9 @@ public class ShoppingCart
 {
     private readonly List<BaseProduct> _products = [];
     public BaseProduct this[int index] => _products[index];
+    public double SumPrice => _products.Sum(p => p.SumPrice);
+    public int TotalCount => _products.Sum(p => p.Quantity);
+    public int Count => _products.Count;
 
     public int Add<TProduct>(TProduct product) where TProduct : BaseProduct
     {
@@ -13,17 +16,14 @@ public class ShoppingCart
         _products.Add(product);
         return product.Id;
     }
+
     public void Remove<TProduct>(TProduct product) where TProduct : BaseProduct
     {
         _products.Remove(product);
     }
+
     public void Remove(int index)
     {
         _products.RemoveAt(index);
     }
-    public double SumPrice => _products.Sum(p => p.SumPrice);
-        
-    public int TotalCount => _products.Sum(p => p.Quantity);
-    public int Count => _products.Count;
-
 }

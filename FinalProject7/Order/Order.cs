@@ -5,6 +5,7 @@ public class Order<TDelivery>(TDelivery delivery, ShoppingCart shoppingCart) : I
     public TDelivery Delivery = delivery;
     public int Id { get; set; }
     public ShoppingCart ShoppingCart { get; set; } = shoppingCart;
+
     public static bool operator ==(Order<TDelivery> order1, Order<TDelivery> order2)
     {
         return order1.Id == order2.Id;

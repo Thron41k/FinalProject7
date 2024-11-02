@@ -14,7 +14,6 @@ public class NetworkEquipmentCategory : BaseCategory
         {
             CharacteristicsDictionary.Add("Wi-Fi", "Нет");
         }
-
         if (lanPorts <= 0) return;
         CharacteristicsDictionary.Add("Количество LAN портов", lanPorts.ToString());
         CharacteristicsDictionary.Add("Скорость LAN портов", lanSpeed);
